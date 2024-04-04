@@ -12,7 +12,7 @@ emotions = ['angry', 'disgusted', 'fearful', 'happy', 'neutral', 'sad', 'surpris
 
 @app.route("/getemotion-svm", methods=["POST"])
 def svm():
-    model = load_model('DeepFaceModel_SVM.pkl')
+    model = load_model('models/DeepFaceModel_SVM.pkl')
     img_path = request.files['image']
     embeddings = create_deepface_reps(img_path)
     if embeddings is None:
