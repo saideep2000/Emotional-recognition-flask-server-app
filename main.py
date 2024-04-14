@@ -22,7 +22,9 @@ def svm():
     df = pd.DataFrame([embeddings])
     df = preprocess_data(df)
     y_pred = predict(model, df)
-    return jsonify({"prediction": emotions[int(y_pred)]})
+    print(y_pred)
+    # return jsonify({"prediction": emotions[int(y_pred)]})
+    return jsonify({"prediction": y_pred[0]})
 
 
 if __name__ == '__main__':

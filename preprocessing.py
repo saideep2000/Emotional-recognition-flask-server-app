@@ -35,7 +35,9 @@ def preprocess_data(df):
 
     # Sort variances in ascending order to get columns with the lowest variance first
     # and then select the first 2048 columns
-    low_variance_columns = variances.nsmallest(2048).index
+    # low_variance_columns = variances.nsmallest(2048).index
+
+    low_variance_columns = variances.nsmallest(4096).index
 
     # Keep only the columns with the lowest variance
     df = df[low_variance_columns]
