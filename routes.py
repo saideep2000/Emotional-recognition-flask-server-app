@@ -1,16 +1,12 @@
-# main.py
-from flask import Flask, request, jsonify, render_template
-import numpy as np
+from flask import Blueprint, request, jsonify
 import pandas as pd
-from preprocessing import create_deepface_reps, preprocess_data
-from svm import load_model, predict
-
-app = Flask(__name__)
-
+from .preprocessing import create_deepface_reps, preprocess_data
+from .svm import load_model, predict
+main = Blueprint('main', __name__)
 
 emotions = ['angry', 'disgusted', 'fearful', 'happy', 'neutral', 'sad', 'surprised']
 
-@app.route("/getemotion-svm", methods=["POST"])
+@main.route("/getemotion-svm", methods=["POST"])
 def svm():
     model = load_model('models/DeepFaceModel_SVM.pkl')
     img_path = request.files['image']
@@ -23,7 +19,3 @@ def svm():
     df = preprocess_data(df)
     y_pred = predict(model, df)
     return jsonify({"prediction": emotions[int(y_pred)]})
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
