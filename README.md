@@ -53,6 +53,11 @@ pip install -r requirements.txt
 start command:
 gunicorn run:app
 
+### upgrade
+
+pip install --upgrade pip setuptools wheel
+
+
 
 ## Project Struture is :
 
