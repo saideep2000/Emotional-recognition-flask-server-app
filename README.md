@@ -19,7 +19,7 @@ check for the application is there or not:
 flask shell
 
 If you didn't see anything running(set the FLASK_APP environment variable to your application factory):
-export FLASK_APP=__init__:create_app
+export FLASK_APP=main:create_app
 
 
 
